@@ -19,10 +19,6 @@ jobs:
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
 
-      - name: Deploy to Netlify
-        run: |
-          netlify link --auto
-          netlify deploy --prod
         env:
           CI: true
           PGHOST: ${{ secrets.PGHOST }}
