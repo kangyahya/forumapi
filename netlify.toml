@@ -1,3 +1,4 @@
-[build]
-    command = "npm run start | npm run test"
-    publish = "/"
+[functions]
+inlcude = ["functions/**/*"]
+[proccess]
+command = "npm start"
