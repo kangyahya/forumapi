@@ -10,12 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16.13.0
-      - run: npm install
-      - run: npm run migrate up
-      - uses: netlify/actions/deploy@v1
-        with:
-          token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+
+        env:
+          CI: true
+          PGHOST: ${{ secrets.PGHOST }}
+          PGUSER: ${{ secrets.PGUSER }}
+          PGDATABASE: ${{ secrets.PGDATABASE }}
+          PGPASSWORD: ${{ secrets.PGPASSWORD }}
+          PGPORT: ${{ secrets.PGPORT }}
+          ACCESS_TOKEN_KEY: ${{ secrets.ACCESS_TOKEN_KEY }}
+          REFRESH_TOKEN_KEY: ${{ secrets.REFRESH_TOKEN_KEY }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
