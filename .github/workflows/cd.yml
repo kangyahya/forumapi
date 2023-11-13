@@ -17,7 +17,6 @@ jobs:
         uses: actions/setup-node@v2
       - run: npm install
       - run: npm run migrate up
-      - run: pm2 restart forum-api
         env:
           CI: true
           PGHOST: ${{ secrets.PGHOST }}
