@@ -1,4 +1,2 @@
-[functions]
-inlcude = ["functions/**/*"]
 [proccess]
-command = "npm start"
+    command = "npm start"
