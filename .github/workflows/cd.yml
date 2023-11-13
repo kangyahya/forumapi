@@ -15,7 +15,9 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
-
+        run: |
+          npm install
+          npm run migrate up
         env:
           CI: true
           PGHOST: ${{ secrets.PGHOST }}
