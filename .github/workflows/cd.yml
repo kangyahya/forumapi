@@ -20,10 +20,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
-
+      - name: Login Netlify
+        run: netlify login
       - name: Deploy to Netlify
         run: netlify deploy --prod
         env:
