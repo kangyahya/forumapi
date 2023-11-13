@@ -1,0 +1,15 @@
+{
+  "plugins": [{
+    "package": "@netlify/build-plugin-run-script",
+    "version": "^1.0.0",
+    "scripts": {
+      "start": "npm start",
+      "start:dev": "npm start:dev",
+      "test": "npm test",
+      "test:watch:change": "npm test:watch:change",
+      "test:watch": "npm test:watch",
+      "migrate": "npm migrate",
+      "migrate:test": "npm migrate:test"
+    }
+  }]
+}
