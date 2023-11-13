@@ -13,9 +13,5 @@ jobs:
       - name: Deploy app
         uses: actions/checkout@v2
       - name: Deploy to Netlify
-        uses: netlify/actions/cli@v1
-        with:
-          args: deploy --prod
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: npx netlifyctl deploy --prod --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
           
