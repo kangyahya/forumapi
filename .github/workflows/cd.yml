@@ -21,7 +21,7 @@ jobs:
 
       - name: Deploy to Netlify
         run: |
-          netlify link
+          netlify link --auto
           netlify deploy --prod
         env:
           CI: true
