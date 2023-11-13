@@ -5,3 +5,6 @@ coverage
 .env
 forum-api-app-server.pem
 config/database/test.json
+
+# Local Netlify folder
+.netlify
