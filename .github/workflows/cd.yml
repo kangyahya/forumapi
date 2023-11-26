@@ -10,21 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-      - run: npm install
-      - run: npm run migrate up
-      - run: npm run start
-        env:
-          CI: true
-          PGHOST: ${{ secrets.PGHOST }}
-          PGUSER: ${{ secrets.PGUSER }}
-          PGDATABASE: ${{ secrets.PGDATABASE }}
-          PGPASSWORD: ${{ secrets.PGPASSWORD }}
-          PGPORT: ${{ secrets.PGPORT }}
-          ACCESS_TOKEN_KEY: ${{ secrets.ACCESS_TOKEN_KEY }}
-          REFRESH_TOKEN_KEY: ${{ secrets.REFRESH_TOKEN_KEY }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      - name: Install IBM Cloud CLI
+        uses: IBM/actions-ibmcloud-cli@0.0.8
+        with:
+          APIKEY: ${{ secrets.IBM_CLOUD_API_KEY }}
+          CLOUD_REGION: us-south
+          script: |
+            cd ~/forumapi
+            git pull origin master
+            npm install
+            npm run migrate up
+            pm2 restart forumapi
