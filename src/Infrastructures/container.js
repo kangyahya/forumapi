@@ -31,6 +31,9 @@ const AddCommentUseCase = require('../Applications/use_case/AddCommentUseCase');
 const CommentRepositoryPostgres = require('./repository/CommentRepositoryPostgres');
 const DeleteCommentUseCase = require('../Applications/use_case/DeleteCommentUseCase');
 const GetThreadUseCase = require('../Applications/use_case/GetThreadUseCase');
+const LikeRepository = require('../Domains/likes/LikeRepository');
+const LikeRepositoryPostgres = require('./repository/LikeRepositoryPostgres');
+const LikeUnlikeUseCase = require('../Applications/use_case/LikeUnlikeUseCase');
 
 // creating container
 const container = createContainer();
