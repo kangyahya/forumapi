@@ -9,28 +9,28 @@ class LikeRepositoryPostgres extends LikeRepository {
 
   async like(commentId, userId) {
     const query = {
-      text: 'INSERT INTO thread_comment_likes(comment_id, user_id) VALUES($1, $2)',
+      text: 'INSERT INTO comment_likes(comment_id, user_id) VALUES($1, $2)',
       values: [commentId, userId],
     };
-    const result = await this._pool.query(query);
-    return result.rowCount > 0;
+    const { rowCount } = await this._pool.query(query);
+    return rowCount > 0;
   }
 
   async unlike(commentId, userId) {
     const query = {
-      text: 'DELETE FROM thread_comment_likes WHERE comment_id = $1 AND user_id = $2',
+      text: 'DELETE FROM comment_likes WHERE comment_id = $1 AND user_id = $2',
       values: [commentId, userId],
     };
-    const result = await this._pool.query(query);
-    if (!result.rowCount) {
+    const { rowCount } = await this._pool.query(query);
+    if (!rowCount) {
       throw new InvariantError('Gagal batal menyukai komentar');
     }
-    return result.rowCount > 0;
+    return rowCount > 0;
   }
 
   async isUserLike(commentId, userId) {
     const query = {
-      text: 'SELECT * FROM thread_comment_likes WHERE comment_id = $1 AND user_id = $2',
+      text: 'SELECT * FROM comment_likes WHERE comment_id = $1 AND user_id = $2',
       values: [commentId, userId],
     };
     const result = await this._pool.query(query);
