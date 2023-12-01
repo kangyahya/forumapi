@@ -23,7 +23,7 @@ class LikeUnlikeUseCase {
     const { comment_id: commentId, user_id: userId, thread_id: threadId } = useCasePayload;
     await this._threadRepository.isThreadExist(threadId);
     await this._commentRepository.isCommentExist(commentId);
-    const isUserLike = await this._likeRepository.isUserLike(commentId, userId);
+    const isUserLike = await this._likeRepository.isUserlike(commentId, userId);
     if (isUserLike) {
       return this._likeRepository.unlike(commentId, userId);
     }

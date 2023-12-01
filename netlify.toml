@@ -1,4 +1,0 @@
-[build]
-    command = 'npm build'
-[proccess]
-    command = "npm start"

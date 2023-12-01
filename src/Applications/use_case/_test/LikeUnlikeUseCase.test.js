@@ -102,24 +102,24 @@ describe('LikeUseCase.test', () => {
     const comment = {
       id: 'comment-123',
       content: 'A content of comment',
-      thread_id: thread.id
-      user_id: user.id
+      thread_id: thread.id,
+      user_id: user.id,
     };
-      const useCasePayload = {
-        thread_id: thread.id,
-        comment_id: comment.id,
-        user_id: user.id,
-      };
+    const useCasePayload = {
+      thread_id: thread.id,
+      comment_id: comment.id,
+      user_id: user.id,
+    };
       /** creating dependency of use case */
-      const mockThreadRepository = new ThreadRepository();
-      const mockCommentRepository = new CommentRepository();
-      const mockLikeRepository = new LikeRepository();
+    const mockThreadRepository = new ThreadRepository();
+    const mockCommentRepository = new CommentRepository();
+    const mockLikeRepository = new LikeRepository();
     /** mocking needed function */
     mockThreadRepository.isThreadExist = jest.fn()
       .mockImplementation(() => Promise.resolve());
     mockCommentRepository.isCommentExist = jest.fn()
       .mockImplementation(() => Promise.resolve());
-    mockLikeRepository.isUserLike = jest.fn()
+    mockLikeRepository.isUserlike = jest.fn()
       .mockImplementation(() => Promise.resolve(false));
     mockLikeRepository.unlike = jest.fn()
       .mockImplementation(() => Promise.resolve(true));
